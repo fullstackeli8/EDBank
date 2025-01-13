@@ -1,2 +1,2 @@
 # EDBank
-Project 2 - EDBank
+Project 2

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checking Account - Overview</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F4F4F4;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #3D5A40;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .account-title {
+            font-size: 28px;
+            margin: 0 auto;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .account-overview {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .account-balance {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: right;
+            color: #2C3E50;
+        }
+
+        .transactions {
+            padding: 30px;
+            border-radius: 15px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .transactions h3 {
+            margin-bottom: 20px;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 15px;
+            margin-bottom: 15px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .transaction-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .transaction-description {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .transaction-amount {
+            font-size: 20px;
+            font-weight: bold;
+            color: #3D5A40;
+        }
+
+        .show-more {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .show-more button {
+            padding: 12px 24px;
+            background-color: #3D5A40;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+        }
+
+        .show-more button:hover {
+            background-color: #2C3E50;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .quick-actions {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .quick-action {
+            background-color: #556B2F;
+            color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .quick-action:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .quick-action i {
+            display: block;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">E&D</div>
+        <h1 class="account-title">Checking Account</h1>
+    </header>
+
+    <div class="account-overview">
+        <div class="account-balance">
+            Current Balance: $5,000.00
+        </div>
+
+        <div class="transactions">
+            <h3>Recent Transactions</h3>
+            <div class="transaction-item">
+                <span class="transaction-description">Grocery Store Purchase</span>
+                <span class="transaction-amount">- $150.00</span>
+            </div>
+            <div class="transaction-item">
+                <span class="transaction-description">Monthly Rent Payment</span>
+                <span class="transaction-amount">- $1,200.00</span>
+            </div>
+            <div class="transaction-item">
+                <span class="transaction-description">Tuition Payment</span>
+                <span class="transaction-amount">- $2,000.00</span>
+            </div>
+            <div class="transaction-item">
+                <span class="transaction-description">Utility Bills (Electricity and Water)</span>
+                <span class="transaction-amount">- $200.00</span>
+            </div>
+            <div class="transaction-item">
+                <span class="transaction-description">Dining Out</span>
+                <span class="transaction-amount">- $75.00</span>
+            </div>
+            <div class="transaction-item">
+                <span class="transaction-description">Paycheck Deposit</span>
+                <span class="transaction-amount">+ $3,000.00</span>
+            </div>
+            <div class="transaction-item">
+                <span class="transaction-description">Gas Station Purchase</span>
+                <span class="transaction-amount">- $60.00</span>
+            </div>
+            <div class="transaction-item">
+                <span class="transaction-description">Gym Membership</span>
+                <span class="transaction-amount">- $50.00</span>
+            </div>
+            <div class="transaction-item">
+                <span class="transaction-description">Online Subscription</span>
+                <span class="transaction-amount">- $15.00</span>
+            </div>
+
+            <div class="hidden" id="extra-transactions">
+                <div class="transaction-item">
+                    <span class="transaction-description">Coffee Shop</span>
+                    <span class="transaction-amount">- $10.00</span>
+                </div>
+                <div class="transaction-item">
+                    <span class="transaction-description">Clothing Store</span>
+                    <span class="transaction-amount">- $120.00</span>
+                </div>
+                <div class="transaction-item">
+                    <span class="transaction-description">Streaming Service</span>
+                    <span class="transaction-amount">- $12.00</span>
+                </div>
+                <div class="transaction-item">
+                    <span class="transaction-description">Vacation Hotel</span>
+                    <span class="transaction-amount">- $500.00</span>
+                </div>
+                <div class="transaction-item">
+                    <span class="transaction-description">Medical Bill</span>
+                    <span class="transaction-amount">- $250.00</span>
+                </div>
+                <div class="transaction-item">
+                    <span class="transaction-description">Gadget Purchase</span>
+                    <span class="transaction-amount">- $300.00</span>
+                </div>
+            </div>
+
+            <div class="show-more">
+                <button onclick="showMoreTransactions()">Show More</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="quick-actions">
+        <div class="quick-action">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <span>Deposits</span>
+        </div>
+        <div class="quick-action">
+            <i class="fas fa-money-bill-wave"></i>
+            <span>Pay & Transfer</span>
+        </div>
+        <div class="quick-action">
+            <i class="fas fa-compass"></i>
+            <span>Explore</span>
+        </div>
+        <div class="quick-action">
+            <i class="fas fa-plus"></i>
+            <span>Add</span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 E&D. All Rights Reserved. Contact us at 1-800-123-4567 for support.</p>
+    </footer>
+
+    <script>
+        function showMoreTransactions() {
+            const extraTransactions = document.getElementById('extra-transactions');
+            extraTransactions.classList.toggle('hidden');
+            const button = document.querySelector('.show-more button');
+            button.textContent = extraTransactions.classList.contains('hidden') ? 'Show More' : 'Show Less';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>E&D Bank - Money Transfer</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('images/greengrain.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: rgba(11, 47, 15, 0.9);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+        }
+
+        .warning-banner {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 204, 0, 0.38);
+    color: rgb(51, 51, 51);
+    padding: 10px 20px;
+    border-bottom: 2px solid #ff9900;
+    position: static;
+    top: 0;
+    z-index: 1000;
+}
+
+.warning-icon {
+    font-size: 24px;
+    margin-right: 15px;
+    color: #b50000;
+}
+
+.warning-text {
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+
+        .transfer-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            max-width: 76%;
+            margin: auto;
+            flex: 1;
+        }
+
+        .transfer-options {
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .transfer-button {
+            width: 100%;
+            padding: 2rem;
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            border: none;
+            border-radius: 8px;
+            background-color: rgb(11, 47, 15);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .transfer-button:hover {
+            background-color: rgb(9, 40, 13);
+            transform: scale(1.02);
+        }
+        .transfer-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            max-width: 76%;
+            margin: auto;
+        }
+
+        .transfer-options {
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .transfer-button {
+            width: 100%;
+            padding: 2rem;
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            border: none;
+            border-radius: 8px;
+            background-color: rgb(11, 47, 15);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .transfer-button:hover {
+            background-color: rgb(9, 40, 13);
+            transform: scale(1.02);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding-left: 0.5rem;
+        }
+
+        .input-group span {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+            color: rgb(11, 47, 15);
+        }
+
+        .input-box {
+            flex: 1;
+            padding: 1rem;
+            font-size: 1.2rem;
+            border: none;
+            outline: none;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .input-box:focus {
+            box-shadow: 0 0 5px rgba(11, 47, 15, 0.3);
+        }
+
+        .hint-text {
+            color: #999;
+            font-size: 0.9rem;
+            margin-top: -0.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .spaced-input {
+            margin-bottom: 1.5rem;
+        }
+
+        .label-left {
+            text-align: left;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+
+        .button-group button {
+            flex: 1;
+            margin: 0 0.5rem;
+            padding: 0.7rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .submit-button {
+            background-color: rgb(11, 47, 15);
+            color: white;
+        }
+
+        .close-button {
+            background-color: rgb(74, 112, 78);
+            color: white;
+        }
+        .ad-section {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem auto;
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .ad-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: rgb(11, 47, 15);
+        }
+
+        .ad-section p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ad-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .ad-button {
+            background-color: rgb(11, 47, 15);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .ad-button:hover {
+            background-color: rgb(9, 40, 13);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .modal-content input {
+            width: 80%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .footer {
+            background-color: rgb(115, 114, 114);
+            color: rgb(255, 255, 255);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .close-button {
+            background-color: rgb(74, 112, 78);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            background-color: rgb(60, 100, 68);
+        }
+
+        .report-issue-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgb(11, 47, 15);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .report-issue-btn:hover {
+            background-color: rgb(9, 40, 13);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <h1 class="logo">E&D National Bank</h1>
+    </header>
+
+    <main class="transfer-page">
+        <section class="transfer-options">
+            <h2>Manage Your Money</h2>
+            <!-- Warning Banner -->
+<div class="warning-banner">
+    <i class="fa-solid fa-triangle-exclamation warning-icon"></i>
+    <p class="warning-text">Don't fall for an online or marketplace deal that's too good to be true. If a seller won't let you see an item in person, don't send any money. Before you send any money, make sure the recipient's information is accurate.</p>
+</div>
+
+            <button class="transfer-button" id="sendMoney">Send Money</button>
+            <button class="transfer-button" id="requestMoney">Request Money</button>
+            <button class="transfer-button" id="transferBetweenAccounts">Transfer Between Accounts</button>
+        </section>
+
+        <!-- Ad Section -->
+        <section class="ad-section">
+            <h2>Get the E&D Bank Mobile App!</h2>
+            <p>Manage your money on the go. Download the app now for an easier and more secure banking experience.</p>
+            <div class="ad-buttons">
+                <button class="ad-button">Download for iOS</button>
+                <button class="ad-button">Download for Android</button>
+            </div>
+        </section>
+
+        <!-- Request Money Modal -->
+    <div class="modal" id="requestMoneyModal">
+        <div class="modal-content">
+            <h2>Request Money</h2>
+            <form>
+                <div class="input-group">
+                    <span>$</span>
+                    <input type="number" id="amount" name="amount" class="input-box" placeholder="Enter amount" required>
+                </div>
+                <label for="recipientFirstName" class="label-left">Recipient:</label>
+                <input type="text" id="recipientFirstName" name="recipientFirstName" class="input-box spaced-input" placeholder="First Name" required>
+                <input type="text" id="recipientLastName" name="recipientLastName" class="input-box spaced-input" placeholder="Last Name" required>
+                <input type="text" id="additionalDetails" name="additionalDetails" class="input-box spaced-input" placeholder="Payment Note (e.g., Rent, Gift, etc.)">
+                <input type="text" id="zelleUser" name="zelleUser" class="input-box spaced-input" placeholder="Enter Zelle username">
+                <p class="hint-text">U.S. mobile number or email</p>
+                <div class="button-group">
+                    <button type="submit" class="submit-button">Submit</button>
+                    <button type="button" class="close-button" onclick="closeModal()">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Send Money Modal -->
+    <div class="modal" id="sendMoneyModal">
+        <div class="modal-content">
+            <h2>Send Money</h2>
+            <form id="sendMoneyForm">
+                <div class="input-group">
+                    <span>$</span>
+                    <input type="number" id="sendAmount" name="sendAmount" class="input-box" placeholder="Enter amount" required>
+                </div>
+                <label for="recipientName" class="label-left">Recipient:</label>
+                <input type="text" id="recipientName" name="recipientName" class="input-box spaced-input" placeholder="Zelle username" required>
+                <input type="text" id="sendDetails" name="sendDetails" class="input-box spaced-input" placeholder="Payment Note">
+                <div class="button-group">
+                    <button type="submit" class="submit-button">Send Money</button>
+                    <button type="button" class="close-button" onclick="closeModal()">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Transfer Between Accounts Modal -->
+<div class="modal" id="transferAccountsModal">
+    <div class="modal-content">
+        <h2>Transfer Between Accounts</h2>
+        <form id="transferAccountsForm">
+            <div class="input-group">
+                <span>$</span>
+                <input type="number" id="transferAmount" name="transferAmount" class="input-box" placeholder="Enter transfer amount" required>
+            </div>
+            <label for="fromAccount" class="label-left">From Account:</label>
+            <input type="text" id="fromAccount" name="fromAccount" class="input-box spaced-input" placeholder="Account number" required>
+
+            <label for="toAccount" class="label-left">To Account:</label>
+            <input type="text" id="toAccount" name="toAccount" class="input-box spaced-input" placeholder="Enter destination" required>
+
+            <!-- Add Account Button with Plus Sign -->
+            <div class="button-group">
+                <button type="button" id="addAccountButton" class="submit-button" style="background-color: rgb(74, 112, 78); margin-top: 1rem; display: flex; align-items: center; justify-content: center;">
+                    <span style="margin-right: 8px; font-size: 1.2rem;">+</span>Add Account
+                </button>
+            </div>
+
+            <!-- Message at the bottom -->
+            <p style="margin-top: 1rem; font-size: 0.8rem; color: rgb(220, 13, 13); text-align: center;">You are the holder of one occount only.</p>
+
+            <!-- Close button -->
+            <div class="button-group" style="margin-top: 1rem;">
+                <button type="button" class="close-button" onclick="closeModal()">Close</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<button class="report-issue-btn">Report an Issue</button>
+
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 E&D Bank. Member FDIC. Terms & Conditions | Privacy Policy | Security Information</p>
+        <p>Customer support: Call us at 1-800-123-4567 or visit our nearest branch.</p>
+    </footer>
+
+    <script>
+        const requestMoneyButton = document.getElementById('requestMoney');
+        const requestMoneyModal = document.getElementById('requestMoneyModal');
+        const sendMoneyButton = document.getElementById('sendMoney');
+        const sendMoneyModal = document.getElementById('sendMoneyModal');
+
+        requestMoneyButton.addEventListener('click', () => {
+            requestMoneyModal.style.display = 'flex';
+        });
+
+        sendMoneyButton.addEventListener('click', () => {
+            sendMoneyModal.style.display = 'flex';
+        });
+
+        document.getElementById('transferBetweenAccounts').addEventListener('click', () => {
+            document.getElementById('transferAccountsModal').style.display = 'flex';
+        });
+
+        function closeModal() {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => modal.style.display = 'none');
+        }
+
+        window.addEventListener('click', (event) => {
+            if (event.target.classList.contains('modal')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+
+</html>

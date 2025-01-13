@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E&D Bank - Personal Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F4F4F4;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        header {
+            background-color: #556B2F;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .top-section .left ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .top-section .left ul li {
+            margin-right: 15px;
+        }
+
+        .top-section .left ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .login-section {
+            height: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Inactive background image (commented out for reference) */
+        /* .login-section {
+            background-image: url('background.jpg');
+        } */
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 50px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 550px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-box form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        button {
+            cursor: pointer;
+            padding: 15px 25px;
+            border: none;
+            background-color: #556B2F;
+            color: white;
+            border-radius: 5px;
+            transition: box-shadow 0.3s;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .products-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .product {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .product img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .rotating-image {
+            height: 250px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            background-color: #e8e8e8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            margin-top: 40px;
+            flex-direction: column;
+        }
+
+        .info-box {
+            margin-top: 40px;
+            padding: 50px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-section">
+            <div class="left">
+                <ul>
+                    <li><a href="#">Personal</a></li>
+                    <li><a href="#">Commercial</a></li>
+                    <li><a href="#">Wealth</a></li>
+                </ul>
+            </div>
+        </div>
+        <h1>E&D Bank</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Checking & Savings</a></li>
+                <li><a href="#">Credit Cards</a></li>
+                <li><a href="#">Loans</a></li>
+                <li><a href="#">Mortgage</a></li>
+                <li><a href="#">Investing & Retirement</a></li>
+                <li><a href="#">Insurance</a></li>
+                <li><a href="#">Money & Mindset</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="login-section" id="login">
+        <div class="login-box">
+            <h2>Log In</h2>
+            <form>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="products-container">
+        <section class="products-section">
+            <div class="product">
+                <div class="rotating-image" id="insurance-image"></div>
+                <h3>Comprehensive Insurance</h3>
+                <p>"Peace of mind for your most valuable assets!"</p>
+            </div>
+            <div class="product">
+                <div class="rotating-image" id="travel-card-image"></div>
+                <h3>Adventure Credit Card</h3>
+                <p>"Fly free, dream big! Your journeys await."</p>
+            </div>
+            <div class="product">
+                <div class="rotating-image" id="savings-image"></div>
+                <h3>Secure Savings Plan</h3>
+                <p>"Build a future that counts!"</p>
+            </div>
+            <div class="product">
+                <div class="rotating-image" id="investment-image"></div>
+                <h3>Investment Account</h3>
+                <p>"Let your money grow with us!"</p>
+            </div>
+        </section>
+        <div class="image-placeholder">
+            <h4>Main Promotional Photo Area</h4>
+            <p>This placeholder represents where you can insert a large feature image or graphic.</p>
+        </div>
+        <div class="info-box">
+            <h4>Money Market Account</h4>
+            <p><strong>Resolve to save big in 2025.</strong></p>
+            <p>Let’s put your money to work. Even a small tax refund or annual bonus can go toward something big.</p>
+            <p><a href="#" target="_blank">Open now</a> to get started with a Truist One Money Market account.</p>
+            <p><a href="#" target="_blank">Learn more</a></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 E&D Bank. Member FDIC. Terms & Conditions | Privacy Policy | Security Information</p>
+        <p>Customer support: Call us at 1-800-123-4567 or visit our nearest branch.</p>
+    </footer>
+
+    <script>
+        function startImageRotation(elementId, images) {
+            let index = 0;
+            setInterval(() => {
+                const element = document.getElementById(elementId);
+                element.style.backgroundImage = `url(${images[index]})`;
+                index = (index + 1) % images.length;
+            }, 5000);
+        }
+
+        startImageRotation("insurance-image", ["insurance1.jpg", "insurance2.jpg", "insurance3.jpg"]);
+        startImageRotation("travel-card-image", ["travel1.jpg", "travel2.jpg", "travel3.jpg"]);
+        startImageRotation("savings-image", ["savings1.jpg", "savings2.jpg", "savings3.jpg"]);
+        startImageRotation("investment-image", ["investment1.jpg", "investment2.jpg", "investment3.jpg"]);
+    </script>
+</body>
+</html>
